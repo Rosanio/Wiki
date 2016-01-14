@@ -54,6 +54,8 @@
       </div>
     </div>
 
+    <!--jQuery-->
+
     <div id = "cntnt" class="container">
       <div>
         <h1 id="titl">jQuery Concepts</h1>
@@ -113,41 +115,87 @@
         <h1>DOM Manipulation and Traversal</h1>
         <p>JQuery can be used to add elements to and remove elements from the Document Object Model, or DOM for short. This can be useful if you want a user action to display certain information, or change the styling of certain elements.</p>
       </div>
-      <div class = "cntnt">
+      <div id = "apnd" class = "cntnt">
         <h3>Appending HTML Tags</h3>
         <p>One of the more common uses of DOM manipulation is adding content to the DOM  which was not there before. This can be accomplished using the prepend and append methods. For example, if one wanted to click a button to add a list element to an existing unordered list, one would do so like this:</p>
         <code>$(document).ready(function() {<br>$('button').click(function() {<br>$('ul').prepend('&lt;li&gt;Hey There!&lt;/li&gt;');<br>});<br>});</code>
         <p>The append method will achieve the same result, but will add the element after the previously added one, as opposed to prepend which adds it before.</p>
+
+        <button id="listbtn" class="btn btn-primary">Make Text</button>
+
+      </div>
+      <div id="clrchng" class = "cntnt">
+        <h3>Changing the Style</h3>
+        <p>Another good use for jQuery is to create an interavtive element which will assign a certain CSS property to a selected element. the method which gets applied to the selector is simply .css(). The following code will select all h1 elements on a page and make them have a green background:</p>
+        <code>$(document).ready(function() {<br>$('button').click(function() {<br>$('h1').css('background-color', 'green');<br>});<br>});</code>
+
+        <h4>Click <span id="clr" class="clck">here</span> to change the background color of this section to yellow (double click to change it back).</h4>
+
       </div>
       <div class = "cntnt">
-        <h3>Selectors</h3>
-        <p>In jQuery code, you can modify HTML elements by applying a selector to them. To select a paragraph element, for example, you would use the following code:</p>
-        <code>$('p')</code>
+        <h3>Removing Elements</h3>
+        <p>Removing an element from a page is just as easy as appending one. You simply use the remove method, as shown below:</p>
+        <code>$(document).ready(function() {<br>$('button').click(function() {<br>$('h1').remove();<br>});<br>});</code>
+        <p>Click on this button to remove any text you created in the Appending HTML Tags section of the site.</p>
+        <button id="rmvbtn" class="btn btn-primary">Remove Text</button>
+        <p>A very particular selector was used to get the lines of text to be removed one at a time. The code for that is shown here:</p>
+        <code>$(document).ready(function() {<br>$('button').click(function() {<br>$('div').children('p').first().remove();<br>});<br>});</code>
       </div>
+
+<!--Forms-->
+
       <div class = "cntnt">
-        <h3>Event Handlers</h3>
-        <p>To make your selected HTML element interactive, you can use an event handler. These will allow you to make a change to your webpage by clicking on, hovering over, or double clicking on your selected HTML element. Here is an example which will create an alert when you click on a paragraph tag: </p>
-        <code>$('p').click(function() {<br>alert('Hello');<br>});</code>
+        <h1>Forms</h1>
+        <p>A better use of the interactivity that jQuery allows is to collect and use a users input on the site. Different types of forms allow you to collect data in different ways.</p>
       </div>
-      <div class = "cntnt" id="word">
-        <h3>Loading jQuery onto a Page</h3>
-        <p>When you load up your webpage, you want to make sure that the HTML is loaded before your jQuery. Otherwise, your jQuery code will not run. This can be accomplished by wrapping your jQuery code inside the ready event handler. Using the same code from last time, our event handler would look like this:</p>
-        <code>$(document).ready(function() {<br>$('p').click(function() {<br>alert('Hello');<br>});<br>});</code>
+      <div id = "apnd" class = "cntnt">
+        <h3>The Form HTML Tag</h3>
+        <p>The form tag, simply labeled form in HTML, allows you to set up a space in which to collect user data. Inside a typical form tag, you want to include some form of input and a submit button (at the very least). The syntax is as follows:</p>
+        <code>&lt;form&gt;<br>&lt;div class="form-group"&gt;<br>&lt;label for="name"&gt;Enter your name&lt;/label&gt;<br>&lt;input id="name" class="form-control" type="text"&gt;<br>&lt;/div&gt;<br>&lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;<br>&lt;/form&gt;</code>
+        <p>This will create an element which looks like this:</p>
+        <form>
+          <div class="form-group">
+            <label for="name">Enter your name</label>
+            <input id="name" class="form-control" type="text">
+          </div>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+        <p>It's important to note that this form makes use of Bootstrap classes</p>
+
       </div>
+      <div id="clrchng" class = "cntnt">
+        <h3>Adding JavaScript Functionallity</h3>
+        <p>Unfortunately, the form in the last section is useless. This is because we neglected to apply any JavaScript to it. What we want to do is to grab the text the user inputs into the form, and use it on the website somehow. To get the text to appear below the form, we could do something like this:</p>
+        <code>$(document).ready(function() {<br>$('form').submit(function(event) {<br>var nameInput = $('input#name').val();<br>$('div').append(nameInput);<br>event.preventDefault();<br>});<br>});</code>
+
+        <p>There are a few differences between this and our other jQuery code. First, instead of a .click() event handler, we used .submit(). It is important to use this on a form, as it will actually store the data the user inputs. Second, we use the .val() method to extract the value of the input, or rather the data which the user entered. Finally, the event.preventDefault() method at the end of the code prevents jQuery from getting rid of the data, and instead displays it on the website. Here's an example of how this code works:</p>
+        <div id="blanks">
+          <form>
+            <div class="form-group">
+              <label for="name2">Enter your name</label>
+              <input id="name2" class="form-control" type="text">
+            </div>
+            <button type="submit" class="btn">Submit</button>
+          </form>
+        </div>
+        <div class='formshow'>
+        </div>
+      </div>
+
+<!--Attributes-->
+
       <div class = "cntnt">
-        <h3>Manipulating HTML Elements</h3>
-        <p>If you want your event handlers to actually do something useful, you likely want to manipulate other HTML elements. This is set up in a very similar way to setting up event handlers. For example, if I wanted to hide all of my h1 tags by clicking on any of my paragraphs, I could write:</p>
-        <code>$(document).ready(function() {<br>$('p').click(function() {<br>$('h1').hide();<br>});<br>});</code>
-        <p>Some other useful methods to apply to HTML elements are:</p>
-        <code>.show()</code>
-        <code>.toggle()</code>
-        <code>.fadeIn()</code>
-        <code>.fadeOut()</code>
-        <code>.fadeToggle()</code>
-        <code>.slideUp()</code>
-        <code>.slideDown()</code>
-        <code>.slideToggle()</code>
-        <p>The names should be pretty self explanitory, but as a side note, the toggle method will alter between a state of being hidden and being shown.</p>
+        <h1>Attributes</h1>
+        <p>JQuery can be used to change the attributes of selected HTML elements. Attributes are things like classes, id's, types and values. I'd only like to touch on changing the class of an element.</p>
+      </div>
+      <div id = "apnd" class = "cntnt">
+        <h3>Appending HTML Tags</h3>
+        <p>One of the more common uses of DOM manipulation is adding content to the DOM  which was not there before. This can be accomplished using the prepend and append methods. For example, if one wanted to click a button to add a list element to an existing unordered list, one would do so like this:</p>
+        <code>$(document).ready(function() {<br>$('button').click(function() {<br>$('ul').prepend('&lt;li&gt;Hey There!&lt;/li&gt;');<br>});<br>});</code>
+        <p>The append method will achieve the same result, but will add the element after the previously added one, as opposed to prepend which adds it before.</p>
+
+        <button id="listbtn" class="btn btn-primary">Make Text</button>
+
       </div>
     </div>
 
