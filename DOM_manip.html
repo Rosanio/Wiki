@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Manipulation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="sidebar" class="container">
+      <a href='index.html'><img src="http://lorempixel.com/image_output/sports-q-g-154-148-5.jpg"></a>
+      <div id="html" class="sdnav">
+        <p>HTML Concepts</P>
+          <ul>
+            <li><a href="#word">Markdown</a></li>
+            <li><a href="#">Block Elements</a></li>
+            <li><a href="#">Divs and Spans</a></li>
+            <li><a href="#">Inline Elemnts</a></li>
+          </ul>
+      </div>
+
+      <div class="sdnav">
+        <p>CSS Concepts</P>
+          <ul>
+            <li><a href="#">Bootstrap</a></li>
+            <li><a href="#">Cascading styles</a></li>
+            <li><a href="#">Responsive design</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">Floats</a></li>
+            <li><a href="#">Box model</a></li>
+            <li><a href="#">Grid system</a></li>
+          </ul>
+      </div>
+      <div class="sdnav">
+        <p>JavaScript Concepts</P>
+          <ul>
+            <li><a href="#">JS Arithmetic</a></li>
+            <li><a href="#">JS Variables</a></li>
+            <li><a href="#">JS Methods</a></li>
+            <li><a href="#">JS Strings</a></li>
+            <li><a href="#">JS Functions</a></li>
+            <li><a href="#">Arrays</a></li>
+            <li><a href="#">Branching</a></li>
+            <li><a href="#">Looping</a></li>
+          </ul>
+      </div>
+      <div class="sdnav">
+        <p>jQuery Concepts</P>
+          <ul>
+            <li><a href="#">jQuery</a></li>
+            <li><a href="#">DOM Manipulation and Traversal</a></li>
+            <li><a href="#">Forms</a></li>
+            <li><a href="#">Attributes</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div id = "cntnt" class="container">
+      <div class = "cntnt">
+        <h1>DOM Manipulation and Traversal</h1>
+        <p>JQuery can be used to add elements to and remove elements from the Document Object Model, or DOM for short. This can be useful if you want a user action to display certain information, or change the styling of certain elements.</p>
+      </div>
+      <div class = "cntnt">
+        <h3>Appending HTML Tags</h3>
+        <p>One of the more common uses of DOM manipulation is adding content to the DOM  which was not there before. This can be accomplished using the prepend and append methods. For example, if one wanted to click a button to add a list element to an existing unordered list, one would do so like this:</p>
+        <code>$(document).ready(function() {<br>$('button').click(function() {<br>$('ul').prepend('&lt;li&gt;Hey There!&lt;/li&gt;');<br>});<br>});</code>
+        <p>The append method will achieve the same result, but will add the element after the previously added one, as opposed to prepend which adds it before.</p>
+      </div>
+      <div class = "cntnt">
+        <h3>Selectors</h3>
+        <p>In jQuery code, you can modify HTML elements by applying a selector to them. To select a paragraph element, for example, you would use the following code:</p>
+        <code>$('p')</code>
+      </div>
+      <div class = "cntnt">
+        <h3>Event Handlers</h3>
+        <p>To make your selected HTML element interactive, you can use an event handler. These will allow you to make a change to your webpage by clicking on, hovering over, or double clicking on your selected HTML element. Here is an example which will create an alert when you click on a paragraph tag: </p>
+        <code>$('p').click(function() {<br>alert('Hello');<br>});</code>
+      </div>
+      <div class = "cntnt" id="word">
+        <h3>Loading jQuery onto a Page</h3>
+        <p>When you load up your webpage, you want to make sure that the HTML is loaded before your jQuery. Otherwise, your jQuery code will not run. This can be accomplished by wrapping your jQuery code inside the ready event handler. Using the same code from last time, our event handler would look like this:</p>
+        <code>$(document).ready(function() {<br>$('p').click(function() {<br>alert('Hello');<br>});<br>});</code>
+      </div>
+      <div class = "cntnt">
+        <h3>Manipulating HTML Elements</h3>
+        <p>If you want your event handlers to actually do something useful, you likely want to manipulate other HTML elements. This is set up in a very similar way to setting up event handlers. For example, if I wanted to hide all of my h1 tags by clicking on any of my paragraphs, I could write:</p>
+        <code>$(document).ready(function() {<br>$('p').click(function() {<br>$('h1').hide();<br>});<br>});</code>
+        <p>Some other useful methods to apply to HTML elements are:</p>
+        <code>.show()</code>
+        <code>.toggle()</code>
+        <code>.fadeIn()</code>
+        <code>.fadeOut()</code>
+        <code>.fadeToggle()</code>
+        <code>.slideUp()</code>
+        <code>.slideDown()</code>
+        <code>.slideToggle()</code>
+        <p>The names should be pretty self explanitory, but as a side note, the toggle method will alter between a state of being hidden and being shown.</p>
+      </div>
+    </div>
+
+    <script src="js/jquery-1.12.0.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
